@@ -66,7 +66,9 @@ Note that this refers to the number of mandates in the iteration when the offer 
 accepted. If the number of mandates is not unique, join the coalition that offered first.
 ● LastOfferJoinPolicy - Selects the coalition that made the last offer.
 
+
 3.2 The program flow
+
 It is recommended to follow the main.cpp implementation we supplied while reading this section.
 The program receives the config file's path as the first command line argument. Once the
 program starts, it parses the config file and creates a “Simulation” object.
@@ -94,6 +96,7 @@ offer).
 When there are no parties to select from, the agent is idle.
 
 3.3 Configuration file format
+
 The configuration file is given in a JSON format, and it contains a dictionary (hash map) with
 the following entries:
 ● parties - list of objects with name, mandates, join_policy.
@@ -108,16 +111,19 @@ Parsing of JSON is easy in C++ using Niels Lohman's JSON for Modern C++ - an ope
 project. If you want, you can learn how to use this package, and see examples here.
 
 3.4 Termination Conditions
+
 The program terminates when one of the coalitions reaches at least 61 mandates or when all
 the parties have already joined a coalition (all parties are in state Joined).
 You may assume that any given input leads to one of these conditions.
 
 3.5 Output
+
 The program creates a “.out” file in JSON format (which is a bit different from the input JSON).
 The parser is doing this part for you, but you will have to implement the methods marked with
 “TODO” in the skeleton files.
 
 3.6 Full Example
+
 Now we will follow a full simulation example based on the “01.json” config file we supplied to
 you. Take a look at it.
 - At the beginning of the simulation, it initialized with 4 parties, 2 agents, and 2 coalitions
