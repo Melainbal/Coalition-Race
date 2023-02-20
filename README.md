@@ -1,11 +1,19 @@
 # Coalition-Race
 
+the SPLand president decided to change the method of forming a coalition by
+letting multiple "agents" from different parties try their best to create a 61 coalition as fast as
+possible.
 C++ program that simulates the "Coalition Race" and report
 the first coalition formed (or failure).
 The simulator should be based on a graph that contains:
 ● Parties as vertices
 ● Collaborations as edges (2 parties that agree to cooperate)
 ● “Similarity score” as edge weight, for every 2 connected parties
+Here is an example for a graph at the beginning of the simulation. The colors represent the
+state of the parties (will be explained later).
+
+![image](https://user-images.githubusercontent.com/94444014/220151391-305e2caf-e3d4-4022-a6d6-d606b06258c4.png)
+
 
 The program will receive a config file (JSON) as input, which includes the parties' details (id,
 name, number of mandates, join policy), the graph, and the list of agents (id, party id, selection
@@ -18,6 +26,14 @@ To clarify:
 ● In each party, there is a single agent if the party belongs to a coalition (state Joined).
 ● The total number of agents in the simulation equals the number of parties in the graph
 belonging to some coalition (state Joined).
+Example
+
+Suppose an agent from party#0 offered party#1 to join its coalition.
+If party#1 accepts the offer, it adds itself to the coalition and adds a clone of the agent to the
+vector of agents (as well as updating the id and party id).
+
+![image](https://user-images.githubusercontent.com/94444014/220151515-04d2ad23-54e1-4ac0-8207-796732d123cf.png)
+
 
 3.1 Classes
 
