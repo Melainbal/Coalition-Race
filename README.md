@@ -20,6 +20,7 @@ To clarify:
 belonging to some coalition (state Joined).
 
 3.1 Classes
+
 Parser – This is a class with static methods only, that is responsible for parsing from JSON to
 object of class Simulation and the other way around.
 
