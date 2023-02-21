@@ -6,9 +6,13 @@ possible.
 C++ program that simulates the "Coalition Race" and report
 the first coalition formed (or failure).
 The simulator should be based on a graph that contains:
+
 ● Parties as vertices
+
 ● Collaborations as edges (2 parties that agree to cooperate)
+
 ● “Similarity score” as edge weight, for every 2 connected parties
+
 Here is an example for a graph at the beginning of the simulation. The colors represent the
 state of the parties (will be explained later).
 
@@ -22,10 +26,14 @@ Each agent belongs to a party. In every step, the agent offers an adjacent party
 party has decided to join a coalition, it should clone the agent who made the offer to the
 newly joined party (so the joined party can now help the coalition).
 To clarify:
+
 ● Coalition is a set of connected parties (in SPLand, connectivity is enough).
+
 ● In each party, there is a single agent if the party belongs to a coalition (state Joined).
+
 ● The total number of agents in the simulation equals the number of parties in the graph
 belonging to some coalition (state Joined).
+
 Example
 
 Suppose an agent from party#0 offered party#1 to join its coalition.
@@ -43,7 +51,9 @@ object of class Simulation and the other way around.
 Simulation - This class is responsible for managing the simulation resources and making
 simulation steps (described in The program flow). This object is created by Parser using the
 initial values from the JSON configuration file. The Simulation object contains
+
 ● Graph
+
 ● Vector of Agents
 
 Graph – This class is represented by an adjacency matrix (edges) and parties vector
@@ -70,17 +80,22 @@ using SelectionPolicy::select(...) and offers the party to join its coalition.
 SelectionPolicy - an abstract class that represents a strategy algorithm for selecting the next
 party to offer. It has the abstract method SelectionPolicy::select(...) that will be implemented in
 the derived classes:
+
 ● MandatesSelectionPolicy - Selects the neighboring party with the most mandates.
+
 ● EdgeWeightSelectionPolicy - Selects the neighboring party with the highest edge
 weight.
+
 If the maximum mandates/edge weight is not unique, take the first party (with the lower id).
 
 JoinPolicy - an abstract class that represents a strategy algorithm for choosing which offer to
 accept and which coalition to join. It has JoinPolicy::join(...) abstract method that will be
 implemented in the derived classes:
+
 ● MandatesJoinPolicy - Selects the coalition with the largest number of mandates.
 Note that this refers to the number of mandates in the iteration when the offer is
 accepted. If the number of mandates is not unique, join the coalition that offered first.
+
 ● LastOfferJoinPolicy - Selects the coalition that made the last offer.
 
 
@@ -116,9 +131,13 @@ When there are no parties to select from, the agent is idle.
 
 The configuration file is given in a JSON format, and it contains a dictionary (hash map) with
 the following entries:
+
 ● parties - list of objects with name, mandates, join_policy.
+
 ● graph - a 2D list that represents the adjacency matrix.
+
 ● agents - list of objects with party_id, selection_policy.
+
 The agentId and the partyId members are based on the index of the object in the list. When
 you clone an agent, make sure to change those fields in the cloned object.
 You may assume that the config file is valid, i.e. it is a JSON file that contains the mentioned
