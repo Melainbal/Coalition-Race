@@ -2,9 +2,12 @@
 
 the SPLand president decided to change the method of forming a coalition by
 letting multiple "agents" from different parties try their best to create a 61 coalition as fast as
-possible.
-C++ program that simulates the "Coalition Race" and report
+possible. this is a C++ program that simulates the "Coalition Race" and report
 the first coalition formed (or failure).
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+Additional information about implementation:
+
 The simulator should be based on a graph that contains:
 
 ● Parties as vertices
